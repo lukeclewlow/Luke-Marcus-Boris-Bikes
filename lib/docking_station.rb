@@ -16,6 +16,8 @@ DEFAULT_CAPACITY = 20 #this is an arbitrary value at the moment because we're ta
 		end
 
 	def dock(bike)
+		# if the capacity is reached raise excption
+		raise "Station is full" if full?
 		@bikes << bike # add bike to array of bike
 	end
 
@@ -24,6 +26,7 @@ DEFAULT_CAPACITY = 20 #this is an arbitrary value at the moment because we're ta
 	end
 
 	def full?
+		# bike_count = method for giving us the bike count
 		bike_count == @capacity # =DEFAULT_CAPACITY = 20
 	end
 
