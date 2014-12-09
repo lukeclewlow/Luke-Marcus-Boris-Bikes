@@ -13,13 +13,9 @@ class Bike
 		@broken = true
 	end
 
-<<<<<<< HEAD
-end
-=======
 	def fix!
 		@broken = false
 	end
 
 end
 
->>>>>>> 27420065276cd498b9e7359d2c44cc76532d898e

@@ -1,0 +1,7 @@
+options = {}
+
+puts options
+
+options = {:capacity => 20}
+
+puts options
