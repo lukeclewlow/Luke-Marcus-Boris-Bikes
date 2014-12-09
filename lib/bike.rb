@@ -1,7 +1,7 @@
 class Bike
 
 	def initialize
-		@broken = false #can be changed everywhere in the class
+		fix!() # offers class method with instance variable @false
 	end
 
 
