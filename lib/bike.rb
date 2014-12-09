@@ -13,5 +13,3 @@ class Bike
 	end
 
 end
-
-#NEW CHANGE!!!
