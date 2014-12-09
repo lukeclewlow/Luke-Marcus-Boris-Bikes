@@ -4,7 +4,6 @@ class Bike
 		@broken = false
 	end
 
-
 	def broken?
 		@broken
 		end
