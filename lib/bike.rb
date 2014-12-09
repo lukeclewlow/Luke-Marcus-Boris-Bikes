@@ -4,9 +4,14 @@ class Bike
 		@broken = false
 	end
 
+
 	def broken?
-		@broken = false
+		@broken
+		end
+
+	def break! #exclamation for changing the state of the object
+		@broken = true
 	end
-	
+
 end
 
