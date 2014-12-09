@@ -1,4 +1,5 @@
 class DockingStation
+
 DEFAULT_CAPACITY = 20 #this is an arbitrary value at the moment because we're taking our value from the test
 					
 
@@ -13,7 +14,8 @@ DEFAULT_CAPACITY = 20 #this is an arbitrary value at the moment because we're ta
 
 	def bike_count
 		@bikes.count
-		end
+	end
+
 
 	def dock(bike)
 		# if the capacity is reached raise excption
@@ -21,14 +23,17 @@ DEFAULT_CAPACITY = 20 #this is an arbitrary value at the moment because we're ta
 		@bikes << bike # add bike to array of bike
 	end
 
+
 	def release(bike)
 		@bikes.delete(bike)
 	end
+
 
 	def full?
 		# bike_count = method for giving us the bike count
 		bike_count == @capacity # =DEFAULT_CAPACITY = 20
 	end
+
 
 end
 
