@@ -1,33 +1,14 @@
+require_relative './bike_container'
+
 class Garage
 
+	include BikeContainer
 
-
-	def initialize
-		@bikes = []
+	def fix_all_broken_bikes
+		broken_bikes.each { |broken_bike| broken_bike.fix! }
 	end
 
-	def capacity
-		@capacity = 20
+	def to_call_van
+		call = true
 	end
-
-	def bike_count
-		@bikes.count
-	end
-
-	def dock(bike)
-		@bikes << bike
-	end
-
-	def release(bike)
-		@bikes.delete(bike)
-	end
-
-	def full?
-		bike_count == capacity
-	end
-
-	def available_bikes
-		@bikes.reject{ |bike| bike.broken? }
-	end
-
 end

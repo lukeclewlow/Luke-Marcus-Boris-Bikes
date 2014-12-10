@@ -10,7 +10,7 @@ describe Garage do
 
 		#helper method
 	def fill_garage(garage) #needs an argument to be passed so we know what to fill
-		20.times { garage.dock(bike) }
+		10.times { garage.dock(bike) }
 	end
 
 	
@@ -42,4 +42,18 @@ describe Garage do
 	end
 
 
+	it "should be able to fix bikes" do
+		bike1 = Bike.new
+		bike2 = Bike.new
+		bike1.break!
+		bike2.break!
+		garage.dock(bike1)
+		garage.dock(bike2)
+		garage.fix_all_broken_bikes
+		expect(garage.available_bikes).to eq([bike1, bike2])
+	end
+
+	it "should be able to call a van" do
+		expect(garage.to_call_van).to eq(true)	
+	end
 end

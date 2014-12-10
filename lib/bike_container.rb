@@ -6,6 +6,8 @@ module BikeContainer # this is a module, not a class, it cannot be instatiated, 
 		# it will return the value of the instance variable @ capacity, HOWEVER, if @capacity is nil, it will assign DEFAULT_CAPACITY to it first
 		# this enables us to call the method capacity() before the value was set, it will be set to the default the first time it's accepted ?
 
+		BROKEN_BIKES = Proc.new { |bike| bike.broken? } # created Proc of a block for select & rejecting from bikes array
+
 		def bikes # accessor methods accesses instance variable values from outside the class
 		# accesses @bikes instance variable from DockingStation class
 			@bikes ||= []
@@ -42,6 +44,11 @@ module BikeContainer # this is a module, not a class, it cannot be instatiated, 
 		end
 
 		def available_bikes
-			bikes.reject {|bike| bike.broken?}
+			bikes.reject(&BROKEN_BIKES)
 		end
+
+		def broken_bikes
+			@bikes.select(&BROKEN_BIKES)
+		end
+
 end
