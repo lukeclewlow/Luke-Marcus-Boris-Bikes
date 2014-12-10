@@ -34,6 +34,10 @@ DEFAULT_CAPACITY = 20 #this is an arbitrary value at the moment because we're ta
 		bike_count == @capacity # =DEFAULT_CAPACITY = 20
 	end
 
+	def available_bikes
+		broken = @bikes.reject {|bike| bike.broken? }
+	end
+
 
 end
 
