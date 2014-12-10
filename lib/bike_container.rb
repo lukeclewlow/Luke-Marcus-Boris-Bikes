@@ -7,7 +7,7 @@ module Bikecontainer
 		# || = operators initliaze values
 
 		def bikes # accessor methods accesses instance variable values from outside the class
-			@bikes | | = []
+			@bikes || = []
 		end
 
 		def capacity # accessor methods accesses instance variable values from outside the class
