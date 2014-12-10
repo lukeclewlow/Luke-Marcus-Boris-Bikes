@@ -1,6 +1,6 @@
-module Bikecontainer # this is a module, not a class, it cannot be instatiated, i.e. no BikeContainer.new, no state
+module BikeContainer # this is a module, not a class, it cannot be instatiated, i.e. no BikeContainer.new, no state
 
-		DEFAULT CAPACITY = 10
+		DEFAULT_CAPACITY = 10
 
 		# bikes & capacity use || = operators to initliaze values, so when any other method calls capacity()
 		# it will return the value of the instance variable @ capacity, HOWEVER, if @capacity is nil, it will assign DEFAULT_CAPACITY to it first
@@ -8,15 +8,15 @@ module Bikecontainer # this is a module, not a class, it cannot be instatiated, 
 
 		def bikes # accessor methods accesses instance variable values from outside the class
 		# accesses @bikes instance variable from DockingStation class
-			@bikes | | = []
+			@bikes ||= []
 		end
 
 		def capacity # accessor methods accesses instance variable values from outside the class
 			# accesses @capacity instance variable from DockingStation class 
-			@capacity || = DEFAULT CAPACITY
+			@capacity ||= DEFAULT_CAPACITY
 		end
 
-		def capacity =(value) # accessor methods accesses instance variable values from outside the class
+		def capacity=(value) # accessor methods accesses instance variable values from outside the class
 			# accesses @capacity instance variable from DockingStation class 
 			@capacity = value # value of module method capacity is instance variable capacity set from DockingStation class
 		end
@@ -29,8 +29,7 @@ module Bikecontainer # this is a module, not a class, it cannot be instatiated, 
 		end
 
 		def dock(bike)
-			raise "Station is full"
-			if full? 
+			raise "Station is full" if full? 
 			bikes << bike
 		end
 
