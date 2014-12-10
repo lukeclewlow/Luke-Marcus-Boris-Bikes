@@ -12,6 +12,8 @@ class DockingStation
     # capacity (the second argument to fetch()) is calling
     # the capacity() method in BikeContainer
     self.capacity = options.fetch(:capacity, capacity)
+    # Ruby being nice capacity = is capacity= method from the module
+    # options is a hash, :capacity symbol is the key 
   end
 
 end
