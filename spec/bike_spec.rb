@@ -16,7 +16,7 @@ describe Bike do
 		bike.break!		# call method on bike object, 
 		expect(bike).to be_broken
 	end
-
+	
 
 	it "should be able to get fixed" do
 		bike.break!

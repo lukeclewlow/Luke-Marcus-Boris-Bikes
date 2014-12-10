@@ -1,6 +1,6 @@
 module BikeContainer # this is a module, not a class, it cannot be instatiated, i.e. no BikeContainer.new, no state
 
-		DEFAULT_CAPACITY = 10
+		DEFAULT_CAPACITY = 20
 
 		# bikes & capacity use || = operators to initliaze values, so when any other method calls capacity()
 		# it will return the value of the instance variable @ capacity, HOWEVER, if @capacity is nil, it will assign DEFAULT_CAPACITY to it first
