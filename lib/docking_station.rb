@@ -1,7 +1,7 @@
 # load BikeContainer
 require_relative 'bike_container'
 
-class DockingStation(capacity)
+class DockingStation
 
   # this gives us all the methods that used to be in this class
   include BikeContainer
