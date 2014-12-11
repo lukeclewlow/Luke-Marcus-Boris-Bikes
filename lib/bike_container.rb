@@ -71,7 +71,12 @@ module BikeContainer # this is a module, not a class, it cannot be instatiated, 
 			end
 		end
 
-		
+		def collect_all_working_bikes_from station
+			station.available_bikes.each do |bike|
+				self.dock bike
+				station.release(bike)
+			end
+		end	
 
 		
 end

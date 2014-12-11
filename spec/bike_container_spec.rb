@@ -10,6 +10,7 @@ describe BikeContainer do
 	let(:van) {ContainerHolder.new}
 
 	let(:broken_bike){double :bike, broken?: true}
+	let(:working_bike){double :bike, broken?: false}
 
 	#helper method
 	def fill_holder(holder)
@@ -78,5 +79,11 @@ describe BikeContainer do
 			expect{van.collect_all_broken_bikes_from holder}.to change{holder.broken_bikes.count}.by -1
 			# when the van(also a holder) uses class method collect_all_broken_bikes the count where the bike was
 			# docked changes by -1
+		end
+
+
+		it "should collect all working bikes" do 
+			holder.dock working_bike
+			expect{van.collect_all_working_bikes_from holder}.to change{holder.available_bikes.count}.by -1
 		end
 end
