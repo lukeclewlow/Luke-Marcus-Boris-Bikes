@@ -11,4 +11,5 @@ class Garage
 	def to_call_van
 		call = true
 	end
+	
 end

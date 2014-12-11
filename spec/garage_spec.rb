@@ -9,10 +9,17 @@ describe Garage do
 	let(:bike) {Bike.new}
 
 		#helper method
-	def fill_garage(garage) #needs an argument to be passed so we know what to fill
-		10.times { garage.dock(bike) }
+	def fill_garage(garage)
+		10.times { garage.dock(Bike.new) }
 	end
 
+	def empty_garage(garage)
+		while !garage.eempty?
+			garage.bikes.each do |bike|
+				garage.release(bike)
+			end
+		end
+	end
 	
 	
 	it "should be able to receive bikes" do
@@ -52,5 +59,12 @@ describe Garage do
 		garage.fix_all_broken_bikes
 		expect(garage.available_bikes).to eq([bike1, bike2])
 	end
+
+it "should know if it's empty" do
+			fill_garage garage
+			expect(garage).not_to be_eempty
+			empty_garage garage
+			expect(garage).to be_eempty
+		end
 
 end

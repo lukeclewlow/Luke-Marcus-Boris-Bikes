@@ -1,5 +1,6 @@
 require './lib/bike_container'
-
+require 'byebug'
+require 'bike'
 class ContainerHolder; include BikeContainer; end
 
 describe BikeContainer do
@@ -9,7 +10,15 @@ describe BikeContainer do
 
 	#helper method
 	def fill_holder(holder)
-		10.times { holder.dock(bike) }
+		10.times { holder.dock(Bike.new) } #use Bike.new as otherwise you are filling array with 10 of the same object, we want 10 different
+	end
+
+	def empty_holder(holder)				#iterates through the full array and releases one bike each time
+		while !holder.eempty?
+			holder.bikes.each do |bike|
+				holder.release(bike)
+			end
+		end
 	end
 	
 	it "should accept a bike" do
@@ -25,6 +34,10 @@ describe BikeContainer do
 			holder.dock(bike) #process bike is docked, bike count = 1
 			holder.release(bike) # process bike is released, bike count -1
 			expect(holder.bike_count).to eq(0) # no more bikes!
+		end
+
+		it "should say when there are no bikes" do			
+			expect{holder.release(bike)}.to raise_error EmptyContainerError
 		end
 
 		it "should know when its full" do
@@ -47,4 +60,10 @@ describe BikeContainer do
 			expect(holder.available_bikes).to eq([working_bike])
 		end
 
+		it "should know if it's empty" do
+			fill_holder holder
+			expect(holder).not_to be_eempty
+			empty_holder holder
+			expect(holder).to be_eempty
+		end
 end
