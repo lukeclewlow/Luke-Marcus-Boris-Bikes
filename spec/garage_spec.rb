@@ -53,7 +53,4 @@ describe Garage do
 		expect(garage.available_bikes).to eq([bike1, bike2])
 	end
 
-	it "should be able to call a van" do
-		expect(garage.to_call_van).to eq(true)	
-	end
 end
