@@ -9,5 +9,9 @@ class Van
 	end
 
 
+	
+	def dock_all_broken_bikes
+			broken_bikes.each { |broken_bike| dock(broken_bike) }
+		end
 
 end

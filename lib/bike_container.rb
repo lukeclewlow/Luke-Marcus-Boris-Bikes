@@ -60,7 +60,19 @@ module BikeContainer # this is a module, not a class, it cannot be instatiated, 
 		end
 
 		def broken_bikes
-			@bikes.select(&BROKEN_BIKES)
+			bikes.select(&BROKEN_BIKES)
 		end
+
+
+		def collect_all_broken_bikes_from station
+			station.broken_bikes.each do |bike| # station object calls method each on array of broken bikes
+				self.dock bike  # now docks bike to self, i.e. whoever call the method
+				station.release(bike) # station object release bike
+			end
+		end
+
+		
+
 		
 end
+

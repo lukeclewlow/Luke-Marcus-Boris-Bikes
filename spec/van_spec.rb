@@ -61,4 +61,21 @@ describe Van do
 			expect(van).to be_eempty
 		end
 
+		it "should accept all broken bikes" do
+			broken_bike = double :bike, broken?: true
+			station_with_bike = double :station, broken_bikes: [broken_bike]
+			allow(station_with_bike).to receive(:release)
+			van.collect_all_broken_bikes_from station_with_bike
+			expect(van.broken_bikes.count).to eq 1
+		end
+
+		it "should release broken bikes when collecting" do
+		 	broken_bike = double :bike, broken?: true # broken bike double
+			station_with_bike = double :station, broken_bikes: [broken_bike] # station double with broken_bike double
+			expect(station_with_bike).to receive(:release).with broken_bike # station double to receive the release method for broken_bike
+			van.collect_all_broken_bikes_from station_with_bike # van calls collect method gets the broken bike double from the station
+		end
+
+
+
 end
