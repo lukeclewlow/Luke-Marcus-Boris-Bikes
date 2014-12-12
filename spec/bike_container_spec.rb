@@ -1,6 +1,15 @@
 require './lib/bike_container'
 require 'byebug'
 require 'bike'
+
+
+class Banana
+	def banana
+		
+	end
+end
+
+
 class ContainerHolder; include BikeContainer; end
 
 describe BikeContainer do
@@ -9,8 +18,9 @@ describe BikeContainer do
 	let(:holder) {ContainerHolder.new}
 	let(:van) {ContainerHolder.new}
 
-	let(:broken_bike){double :bike, broken?: true}
-	let(:working_bike){double :bike, broken?: false}
+	let(:broken_bike)  { double :bike, broken?: true, is_a?: true }
+	let(:working_bike) { double :bike, broken?: false, is_a?: true }
+	#let(:x){double :x, bike: false}
 
 	#helper method
 	def fill_holder(holder)
@@ -28,7 +38,7 @@ describe BikeContainer do
 	# def break_all(holder)
 
 	
-	it "should accept a bike" do
+		it "should accept a bike" do
 			
 			expect(holder.bike_count).to eq(0)
 			
@@ -36,6 +46,11 @@ describe BikeContainer do
 			
 			expect(holder.bike_count).to eq(1)
 		end
+
+		it "should reject anything that isn't a bike " do 
+			expect{holder.dock(:banana)}.to raise_error WrongItemError
+		end
+
 
 		it "should release a bike" do
 			holder.dock(bike) #process bike is docked, bike count = 1
@@ -86,4 +101,5 @@ describe BikeContainer do
 			holder.dock working_bike
 			expect{van.collect_all_working_bikes_from holder}.to change{holder.available_bikes.count}.by -1
 		end
+
 end

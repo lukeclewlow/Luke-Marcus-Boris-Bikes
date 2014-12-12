@@ -4,6 +4,11 @@ class EmptyContainerError < Exception
 	end
 end
 
+class WrongItemError < Exception
+def message
+	"That's not a bike"
+end
+end
 
 module BikeContainer # this is a module, not a class, it cannot be instatiated, i.e. no BikeContainer.new, no state
 
@@ -38,14 +43,16 @@ module BikeContainer # this is a module, not a class, it cannot be instatiated, 
 		end
 
 		def dock(bike)
+			raise WrongItemError unless bike.is_a?(Bike)
 			raise "Station is full" if full? 
-			bikes << bike
+			bikes << bike	
 		end
 
 		def release(bike)
 			raise EmptyContainerError if eempty? #will raise an error(defined at the top) if our array is empty when release is called on it
 			bikes.delete(bike)
 		end
+
 
 		def full? # capacity refers to the accessor method capacity() defined above
 			bike_count == capacity
