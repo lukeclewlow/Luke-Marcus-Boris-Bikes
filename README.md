@@ -9,7 +9,8 @@ A simple ruby program managing the Boris Bike's system in London.
 * Helping me to learn the basic principles of object oriented design. 
 
 ###To run tests:
-```rspec
+```
+rspec
 ```
 
 Objectives
